@@ -4,6 +4,7 @@ import * as firebase from 'firebase'
 import { Observable} from 'rxjs/Observable'
 import { ActivatedRoute } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })

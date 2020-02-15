@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import{ Router } from '@angular/router'
+import {UserService} from './user.service'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +10,12 @@ import{ Router } from '@angular/router'
 })
 
 export class AppComponent {
-  constructor(private auth: AuthService, router: Router){
+  constructor(private userService: UserService, private auth: AuthService, router: Router){
+  
     auth.user$.subscribe(user => {
       if(user){
+        userService.save(user)
+        //up to date name stored in database
         let returnUrl = localStorage.getItem('returnUrl')
         router.navigateByUrl(returnUrl)
       }
